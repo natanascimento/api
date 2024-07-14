@@ -1,0 +1,7 @@
+services:
+  api :
+    container_name: api-template
+    hostname: api-template
+    image: api/template
+    ports:
+      - "8000:8000"
