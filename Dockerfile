@@ -1,4 +1,5 @@
 ARG PYTHON_BASE=3.12.4-slim
+LABEL org.opencontainers.image.source=https://github.com/natanascimento/api
 
 #build stage
 FROM python:$PYTHON_BASE AS builder
