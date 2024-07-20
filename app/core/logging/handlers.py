@@ -20,10 +20,10 @@ class FileHandler:
     @staticmethod
     def create(formatter: logging.Formatter, level: logging = logging.DEBUG):
 
-        if not os.path.exists(settings.LOGS_PATH):
-            os.makedirs(settings.LOGS_PATH)
+        if not os.path.exists(settings.app.LOGS_PATH):
+            os.makedirs(settings.app.LOGS_PATH)
 
-        console_handler = logging.FileHandler(f"{settings.LOGS_PATH}/{datetime.now()}.log")
+        console_handler = logging.FileHandler(f"{settings.app.LOGS_PATH}/{datetime.now()}.log")
         console_handler.setLevel(level)
         console_handler.setFormatter(formatter)
         return console_handler

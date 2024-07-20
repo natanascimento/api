@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PDM
+        uses: pdm-project/setup-pdm@v4
+
+      - name: Install dependencies
+        run: pdm install
+
+      - name: Run tests
+        run: pdm test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@main
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: ${{ matrix.platforms }}
+          push: true
+          outputs: type=image,name=api/template,annotation-index.org.opencontainers.image.description=FastAPI Template Image
