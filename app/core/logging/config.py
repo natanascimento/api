@@ -14,5 +14,5 @@ class LoggerConfig:
     level: logging = logging.DEBUG
 
     def __post_init__(self):
-        if settings.ENV == "prod":
+        if settings.app.ENV == "prod":
             self.level = logging.WARN
