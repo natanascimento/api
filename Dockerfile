@@ -7,7 +7,7 @@ RUN pip install -U pdm
 
 ENV PDM_CHECK_UPDATE=false
 
-COPY pyproject.toml pdm.lock .env README.md /project/
+COPY pyproject.toml pdm.lock README.md /project/
 COPY app/ /project/app
 
 WORKDIR /project
