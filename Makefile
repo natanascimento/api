@@ -26,6 +26,9 @@ build:
 	@echo "----------"
 	docker build -t api/template:latest .
 
+deploy:
+	helm install api ./k8s -n template-api
+
 setup: build
 	@echo "Setting up the project ..."
 	@echo "----------"
