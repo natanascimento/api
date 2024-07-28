@@ -1,0 +1,27 @@
+
+
+app:
+  name: api
+  apiVersion: apps/v1
+  serviceVersion: v1
+
+replicaCount: 1
+
+image:
+  repository: api/template
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: api
+  type: NodePort
+  externalPort: 8000
+  internalPort: 8000
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
